@@ -39,7 +39,7 @@ public class Visitor {
             fileWriter.write(timeOfVisit + "\n");
             fileWriter.write(comments + "\n");
             fileWriter.write(assistantName);
-            logger.info("Save Successful!");
+            logger.info("\nSaved Successfully!");
 
 
         } catch (IOException e) {
@@ -62,7 +62,7 @@ public class Visitor {
                 out.printf("%-11s \t%s%n", fields[fieldsCounter], line);
                 fieldsCounter++;
             }
-            logger.info("Read Successful!");
+            logger.info("\nFile Content Read Successfully!");
 
         }catch (Exception e){
 //           e.printStackTrace();
