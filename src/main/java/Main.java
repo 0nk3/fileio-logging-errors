@@ -1,20 +1,34 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         //TODO : test code should come here
-        //Example
-        Visitor alice = new Visitor(
-                "Alice Cooper",
-                34 ,
-                "12 Dec 2020",
-                "13:00 PM",
-                "Minimum Requirements Not Met",
-                "Steve Jonson"
+        Scanner inputReader = new Scanner(System.in);
+
+
+        System.out.println("Enter Student Full Name : ");
+        String fullname = inputReader.nextLine();
+
+        System.out.println("How old is the student : ");
+        String age = inputReader.nextLine();
+
+        System.out.println("What is your name (Assistant) : ");
+        String assistant = inputReader.nextLine();
+
+        System.out.println("Comments : ");
+        String comments = inputReader.nextLine();
+
+        Visitor visitor = new Visitor(
+                fullname,
+                age ,
+                comments,
+                assistant
         );
 
-        // Save : IT save the data passes whne creating an object
-        alice.save();
+        // Save : IT save the data passes when creating an object
+        visitor.save();
 
         // load data : load a file containing data of a given visitor
-        alice.load("Alice Cooper");
+        visitor.load(fullname);
     }
 }

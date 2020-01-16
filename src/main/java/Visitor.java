@@ -1,24 +1,24 @@
 import java.io.*;
+import java.time.LocalDate;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import static java.lang.System.out;
+import java.time.LocalTime;
 
 public class Visitor {
 
-    private String fullName;
-    private int age;
-    private String dateOFVisit;
-    private String timeOfVisit;
-    private String comments;
-    private String assistantName;
+    private String
+            fullName,
+            age,
+            comments,
+            assistantName;
 
     private static final Logger logger = LogManager.getLogger(Visitor.class);
 
-    public Visitor(String fullName, int age, String dateOFVisit, String timeOfVisit, String comments, String assistantName) {
+    public Visitor(String fullName, String  age, String comments, String assistantName) {
         this.fullName = fullName;
         this.age = age;
-        this.dateOFVisit = dateOFVisit;
-        this.timeOfVisit = timeOfVisit;
         this.comments = comments;
         this.assistantName = assistantName;
     }
@@ -35,18 +35,19 @@ public class Visitor {
 
             fileWriter.write(fullName + "\n");
             fileWriter.write(age + "\n");
-            fileWriter.write(dateOFVisit + "\n");
-            fileWriter.write(timeOfVisit + "\n");
+            fileWriter.write(LocalDate.now() + "\n");
+            fileWriter.write(LocalTime.now() + "\n");
             fileWriter.write(comments + "\n");
             fileWriter.write(assistantName);
-            logger.info("\nSaved Successfully!");
 
+            logger.info("Saved Successfully!\n");
 
         } catch (IOException e) {
             logger.error(e.getMessage());
         }
     }
-    void load(String name){
+    void load(String name
+    ){
 
         // the name should first be converted into the initially proposed file convention
         String nameConvention = "visitor_" + name.toLowerCase().replace(" ", "_") + ".txt";
@@ -62,11 +63,11 @@ public class Visitor {
                 out.printf("%-11s \t%s%n", fields[fieldsCounter], line);
                 fieldsCounter++;
             }
-            logger.info("\nFile Content Read Successfully!");
-
+            logger.info("File Content Read Successfully!\n");
         }catch (Exception e){
 //           e.printStackTrace();
             logger.error(e.getMessage());
         }
     }
 }
+
