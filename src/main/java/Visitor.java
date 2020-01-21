@@ -23,7 +23,7 @@ public class Visitor {
         this.assistantName = assistantName;
     }
 
-    void save() {
+    void save() throws Exception {
         //name convention of  the file
         String fileNameConvention = "visitor_" + fullName + ".txt";
 
@@ -44,10 +44,10 @@ public class Visitor {
 
         } catch (IOException e) {
             logger.error(e.getMessage());
+            throw new Exception("The was a problem in writing to the file");
         }
     }
-    void load(String name
-    ){
+    void load(String name) throws Exception {
 
         // the name should first be converted into the initially proposed file convention
         String nameConvention = "visitor_" + name.toLowerCase().replace(" ", "_") + ".txt";
@@ -67,6 +67,7 @@ public class Visitor {
         }catch (Exception e){
 //           e.printStackTrace();
             logger.error(e.getMessage());
+            throw new Exception("File Not Found");
         }
     }
 }
